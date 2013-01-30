@@ -2,6 +2,15 @@ Play-nicewith-AKKA
 ==================
 
 AKKA implementation for Play 1.2.x
+# Overview
+This project provides a very basic skeleton for integrating AKKA with Play 1.2.x. Everything is included in the project - to run do the following:
+- in a command prompt run `play deps` - this will get the AKKA client jar
+- call 
+	`play run -Dconfig.file=reference.conf`
+
+The database is in memory and so will be cleared every time you run the project.
+
+# Setup Guide (If creating a project manually)
 
 - In your dependencies.yml file include the line
 
