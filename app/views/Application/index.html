@@ -1,0 +1,58 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+<h1>Test Akka</h1>
+
+<h4>1 actor has been setup as a router with 4 actors awaiting processing - this means you can have 4 actors running in parallel</h4>
+
+<div>
+    <a href="@{Application.clearResults()}">Clear Results</a>
+</div>
+<table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Normal / Delayed</th>
+            <th>Actor ID</th>
+            <th>Requested Date</th>
+            <th>Started Date</th>
+            <th>Completed Date</th>
+            <th>Iterations</th>
+            <th>Result</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+#{list items:results, as:"result"}
+<tr>
+    <td>${result.id}</td>
+    <td>${result.calledBy}</td>
+    <td>${result.actorID}</td>
+    <td>${result.createdDate.format("dd/MM/yy hh:mm:ss")}</td>
+    <td>${result.startedDate?.format("dd/MM/yy hh:mm:ss")}</td>
+    <td>${result.completedDate?.format("dd/MM/yy hh:mm:ss")}</td>
+    <td>${result.iterations}</td>
+    <td>${result.value}</td>
+    <td>${result.description}</td>
+</tr>
+#{/list}
+</table>
+
+<hr>
+
+<h4>Run a predefined set of calculations <a href="@{Application.doPredefinedCalc()}">Execute</a></h4>
+
+#{form @Application.doCalculation()}
+    <div>
+        <label for="iterations">Number of iterations of n=n+2</label>
+        <input type="text" name="iterations" id="iterations"/>
+    </div>
+<div>
+    <label for="description">Enter some description text to be saved</label>
+    <input type="text" name="description" id="description"/>
+</div>
+<div>
+    <label for="delay">Delay calculation (secs)</label>
+    <input type="text" name="delay" id="delay" value='0'/>
+</div>
+<div>Each iteration has a thread sleep of 10ms</div>
+<input type="submit" value="Do Calculation">
+#{/form}

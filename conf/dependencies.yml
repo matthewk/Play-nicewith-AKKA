@@ -1,0 +1,5 @@
+# Application dependencies
+
+require:
+    - play
+    - com.typesafe.akka -> akka-actor_2.10 2.1.0
