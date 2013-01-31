@@ -10,6 +10,7 @@ import play.db.jpa.JPAPlugin;
 import java.util.Date;
 
 public class CalculationActor extends UntypedActor{
+
     @Override
     public void onReceive(Object o) throws Exception {
         if (o instanceof CalculationMessage){
