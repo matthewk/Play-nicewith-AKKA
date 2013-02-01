@@ -2,11 +2,14 @@ Play-nicewith-AKKA
 ==================
 
 AKKA implementation for Play 1.2.x
+# Update!
+I have removed the need to call play with the config.file system property. Instead I am using:
+    `ConfigFactory.parseFile(Play.getFile("conf/reference.conf"));`
 # Overview
 This project provides a very basic skeleton for integrating AKKA with Play 1.2.x. Everything is included in the project - to run do the following:
 - in a command prompt run `play deps` - this will get the AKKA client jar
 - call 
-	`play run -Dconfig.file=reference.conf`
+	`play run`
 
 The database is in memory and so will be cleared every time you run the project.
 
